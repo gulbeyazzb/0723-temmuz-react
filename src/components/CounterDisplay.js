@@ -1,3 +1,5 @@
+import { Button } from "reactstrap";
+
 const CounterDisplay = ({
   sayac,
   // props drilling
@@ -12,9 +14,15 @@ const CounterDisplay = ({
       <hr />
       <div className="counter">{sayac}</div>
       <div className="controls">
-        <button onClick={arttirAction}>+</button>
-        <button onClick={azaltAction}>-</button>
-        <button onClick={resetAction}>Reset</button>
+        <Button color="primary me-1" onClick={arttirAction}>
+          +
+        </Button>
+        <Button color="primary me-1" onClick={azaltAction}>
+          -
+        </Button>
+        <Button color="primary me-1" onClick={resetAction}>
+          Reset
+        </Button>
       </div>
     </div>
   );
