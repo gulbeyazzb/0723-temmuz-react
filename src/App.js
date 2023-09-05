@@ -16,12 +16,14 @@ function App() {
   // Componentin JS Bölümü
   const [userName, setUserName] = useState("Anonim");
   const [products, setProducts] = useState([]);
+
+  //Form öğelerini tutacak olan state tanımı; (başlangıç değeri boş value'lara sahip nesne)
+
   const [editFormProduct, setEditFormProduct] = useState(
     editFormProductInitial
   );
   // Props Drilling
-  const history = useHistory();
-
+  const history = useHistory(); // route history için tanımlandı
   useEffect(() => {
     axios
       .get("https://620d69fb20ac3a4eedc05e3a.mockapi.io/api/products")
@@ -31,7 +33,8 @@ function App() {
   }, []);
 
   const editProduct = (product) => {
-    setEditFormProduct(product);
+    // edit linkine click edildiğinde editProduct functionuna ilgili product'ı parametre olarak göndermiştik o function tanımı;
+    setEditFormProduct(product); //Form öğelerini ilgili product verisi ile doldurur
   };
   const inputChangeHandler = (event) => {
     const { value, name, checked, type } = event.target; // name = "password" | "email" | "name"
@@ -42,21 +45,25 @@ function App() {
   };
 
   const productUpdateHandler = (e) => {
-    e.preventDefault();
+    //Form update edildiğinde onSubmit attribute ile çağrılan function tanımı
+    e.preventDefault(); //update edilen form(e)'un default değerleri sıfırlanır.
     if (editFormProduct.id) {
+      //Eğer editlencek product'ın id değeri varsa;
       //edit
       let updateProduct = products.map((product) => {
+        //ürünlerde gezin
         if (product.id == editFormProduct.id) {
-          return editFormProduct;
+          //ilgili ürünün id'si ile ürünlerdeki bir id eşleşiyorsa;
+          return editFormProduct; //editlenecek ürünü döndür.
         } else {
-          return product;
+          return product; //yoksa herhangi ürünü döndür
         }
       });
-      setProducts(updateProduct);
+      setProducts(updateProduct); //döndürülen product ile Products'ı set et.
       //edit
     }
-    setEditFormProduct(editFormProductInitial);
-    history.push("/products");
+    setEditFormProduct(editFormProductInitial); //Formu resetler.
+    history.push("/products"); //Update edildiğinde Products sayfasına yönlendirir
   };
   return (
     // Componentin Template Bölümü
@@ -65,10 +72,10 @@ function App() {
     <Main
       userName={userName}
       products={products}
-      editProduct={editProduct}
-      editFormProduct={editFormProduct}
-      inputChangeHandler={inputChangeHandler}
-      productUpdateHandler={productUpdateHandler}
+      editProduct={editProduct} //edit linki onClick edildiğinde çalışacak olan func -> productsPage
+      editFormProduct={editFormProduct} //Editlenme aşamasında form verilerini taşıyacak olan state
+      inputChangeHandler={inputChangeHandler} //pageContent'te ki form yapısına iletilecek
+      productUpdateHandler={productUpdateHandler} //form submit edildiğinde onSubmit attribute functionu -> pageContent'e.
     />
   );
 }

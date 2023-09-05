@@ -71,7 +71,7 @@ const PageContent = ({
                 value={editFormProduct.stock}
               />
             </label>
-            <button type="submit">Submit</button>
+            <button type="submit">Update</button>
           </form>
         </Route>
         <Route path="/products" exact>
