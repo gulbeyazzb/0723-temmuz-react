@@ -23,3 +23,15 @@
   color: rgb(5, 83, 201);
   background-color: #fff;
 }
+
+.login-form > label {
+  width: 250px;
+}
+
+.product-form > label {
+  display: block;
+}
+.product-form > label > span {
+  width: 250px;
+  display: inline-block;
+}

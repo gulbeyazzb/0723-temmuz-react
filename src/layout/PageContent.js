@@ -3,6 +3,8 @@ import CounterPage from "../pages/CounterPage";
 import MainPage from "../pages/MainPage";
 import ProductsPage from "../pages/ProductsPage";
 import ProductsDetailPage from "../pages/ProductsDetailPage";
+import LoginPage from "../pages/LoginPage";
+import CreateProductPage from "../pages/CreateProductPage";
 
 const PageContent = ({ userName, products }) => {
   return (
@@ -22,6 +24,12 @@ const PageContent = ({ userName, products }) => {
         </Route>
         <Route path="/products/:productId" exact>
           <ProductsDetailPage products={products} />
+        </Route>
+        <Route path="/login" exact>
+          <LoginPage />
+        </Route>
+        <Route path="/create-product" exact>
+          <CreateProductPage />
         </Route>
         <Route path="/" exact>
           <MainPage />

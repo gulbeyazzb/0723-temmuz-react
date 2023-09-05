@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Button } from "reactstrap";
@@ -13,10 +14,18 @@ const ProductsDetailPage = ({ products }) => {
     // history.push("/products");
   };
 
+  // useEffect(() => {
+  //   const pro = products?.find((p) => p.id === productId);
+  //   setProduct(pro);
+  // }, [productId, products]);
+
   useEffect(() => {
-    const pro = products?.find((p) => p.id === productId);
-    setProduct(pro);
-  }, [productId, products]);
+    axios
+      .get(
+        `https://620d69fb20ac3a4eedc05e3a.mockapi.io/api/products/${productId}`
+      )
+      .then((res) => setProduct(res.data));
+  }, [productId]);
 
   return (
     <div>

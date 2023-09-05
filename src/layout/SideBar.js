@@ -9,8 +9,14 @@ const SideBar = () => {
       <NavLink to="/products" exact>
         Ürünler
       </NavLink>
+      <NavLink to="/create-product" exact>
+        Yeni Ürün Ekle
+      </NavLink>
       <NavLink to="/counter" exact>
         Sayaç
+      </NavLink>
+      <NavLink to="/login" exact>
+        Login
       </NavLink>
     </div>
   );
