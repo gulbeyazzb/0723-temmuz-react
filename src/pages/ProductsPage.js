@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-const ProductsPage = ({ products }) => {
+const ProductsPage = ({ products, editProduct }) => {
   const [showModal, setShowModal] = useState(false);
 
   const toggle = () => setShowModal(!showModal);
@@ -38,10 +38,24 @@ const ProductsPage = ({ products }) => {
                 {product.price} TL
               </CardSubtitle>
               <CardText>{product.description}</CardText>
-              <Button color="primary" onClick={toggle}>
-                Sepete Ekle
-              </Button>
-              <Link to={"/products/" + product.id}>İncele</Link>
+              <div className="d-flex text-center ">
+                <Button className="me-2" color="primary" onClick={toggle}>
+                  Sepete Ekle
+                </Button>
+                <Link
+                  className="btn-incele me-2"
+                  to={"/products/" + product.id}
+                >
+                  İncele
+                </Link>
+                <Link
+                  className="btn-edit"
+                  to={"/products/edit"}
+                  onClick={() => editProduct(product)}
+                >
+                  Edit
+                </Link>
+              </div>
             </CardBody>
           </Card>
         ))}

@@ -5,8 +5,16 @@ import ProductsPage from "../pages/ProductsPage";
 import ProductsDetailPage from "../pages/ProductsDetailPage";
 import LoginPage from "../pages/LoginPage";
 import CreateProductPage from "../pages/CreateProductPage";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-const PageContent = ({ userName, products }) => {
+const PageContent = ({
+  userName,
+  products,
+  editProduct,
+  editFormProduct,
+  inputChangeHandler,
+  productUpdateHandler,
+}) => {
   return (
     // Page Componentleri
     <div className="page-content">
@@ -17,10 +25,57 @@ const PageContent = ({ userName, products }) => {
         <Route path="/products/edit">
           <h1>Ürün Düzenleme Sayfası</h1>
           <hr />
-          <form></form>
+          <form onSubmit={productUpdateHandler} className="product-form">
+            <label>
+              <span>İsim</span>
+              <input
+                type="text"
+                name="name"
+                onChange={inputChangeHandler}
+                value={editFormProduct.name}
+              />
+            </label>
+            <label>
+              <span>Açıklama</span>
+              <input
+                type="text"
+                name="description"
+                onChange={inputChangeHandler}
+                value={editFormProduct.description}
+              />
+            </label>
+            <label>
+              <span>Görsel URL</span>
+              <input
+                type="url"
+                name="img"
+                onChange={inputChangeHandler}
+                value={editFormProduct.img}
+              />
+            </label>
+            <label>
+              <span>Ücret</span>
+              <input
+                type="number"
+                name="price"
+                onChange={inputChangeHandler}
+                value={editFormProduct.price}
+              />
+            </label>
+            <label>
+              <span>Stok</span>
+              <input
+                type="number"
+                name="stock"
+                onChange={inputChangeHandler}
+                value={editFormProduct.stock}
+              />
+            </label>
+            <button type="submit">Submit</button>
+          </form>
         </Route>
         <Route path="/products" exact>
-          <ProductsPage products={products} />
+          <ProductsPage products={products} editProduct={editProduct} />
         </Route>
         <Route path="/products/:productId" exact>
           <ProductsDetailPage products={products} />

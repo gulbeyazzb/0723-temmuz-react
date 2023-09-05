@@ -35,3 +35,19 @@
   width: 250px;
   display: inline-block;
 }
+
+.btn-edit {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(244, 177, 30);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.btn-incele {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(215, 8, 8);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
